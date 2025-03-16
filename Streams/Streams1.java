@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -89,36 +90,40 @@ public static void main(String[] args) {
                                      .collect(Collectors.toList());
     System.out.println("8) "+mergedList);
 
-    //9) Find the First Non-Repeating Character in a String
-    // String s9="arunarn";
-    // Optional<Character> ans9=s9.chars().filter(x->)
+    // 9) Find All Unique Characters in a List of Words
+    List<String> words = List.of("apple", "banana");
+
+    Set<Character> uniqueChars = words.stream()
+                                  .flatMap(word -> word.chars().mapToObj(c -> (char) c))
+                                  .collect(Collectors.toSet());
+
+    System.out.println("9) "+uniqueChars);
 
     //10) Partition a List of Integers into Even and Odd Numbers
     List<Integer> arr10=List.of(2,1,6,7,8,9,10);
     Map<String,List<Integer>> ans10=arr10.stream().collect(Collectors.groupingBy(x->x%2==0 ?"Even":"Odd"));
-    System.out.println(ans10);
+    System.out.println("10 ) "+ans10);
 
     //11) Group Employees by Age Bracket (20-30, 30-40, etc.)
     List<Integer> arr11=List.of(23,25,24,39,32,60);
-    Map<String,List<Integer>> ans11=
+    Map<String,List<Integer>> ans11=arr11.stream()
+                                         .collect(Collectors.groupingBy(x->{
+                                            if(x>=20 && x<=30) return "20-30";
+                                            else if(x>=30 && x<=40) return "30-40";
+                                            else return "40+";
+                                         }));
+    System.out.println("11) "+ans11);
 
 
     //12) Find the Longest Word That Starts with a Given Letter
-    // char c='a';
-    // List<String> arr12=List.of("arun","arunkumar","arnold","ak");
-    // String asn12 = arr12.stream().collect(Collectors.groupingBy(x->x.startsWith(c),Collectors.groupingByString::length));
-
-    //13) Find Pairs of Numbers That Sum to a Target Value
-    int target=35;
-
-    //14) Reverse the Words in a Sentence Using Streams
+    char c='a';
+    List<String> arr12=List.of("arun","arunkumar","arnold","ak");
+    Optional<String> asn12 = arr12.stream()
+                        .filter(x->x.startsWith(String.valueOf(c)))
+                        .max(Comparator.comparingInt(String::length));
+    System.out.println("12) "+asn12.get());
 
     
-
-
-
-
-
 
 }
 }
