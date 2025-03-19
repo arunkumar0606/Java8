@@ -54,7 +54,14 @@ public class Student {
 
          //sort by age then by name reversed  
          students.sort(Comparator.comparing(Student::getAge).thenComparing(Student::getName,Comparator.reverseOrder()));
-         students.forEach(System.out::println);
+         
+         //(OR)
+
+         students.sort((s1, s2) -> {
+            int ageComparison = Integer.compare(s1.getAge(), s2.getAge()); // Age Ascending
+            return (ageComparison != 0) ? ageComparison : s2.getName().compareTo(s1.getName()); // Name Descending
+        });
+        students.forEach(System.out::println);
          System.out.println("--------------------------------");
     }
 
