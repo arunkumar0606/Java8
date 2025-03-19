@@ -15,5 +15,6 @@ public class Simple {
 
         System.out.println("Number: " + num);
         System.out.println("Text: " + text);
+        scanner.close();
     }
 }
