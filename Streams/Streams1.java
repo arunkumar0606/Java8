@@ -75,9 +75,6 @@ public static void main(String[] args) {
                                        .collect(Collectors.groupingBy(String::length));
 
                                        //(OR)
-
-    Map<String, Integer> wordLengths = arr7.stream()
-                                           .collect(Collectors.toMap(word -> word, String::length));
     System.out.println("7) "+map7);
 
     //8) Merge Two Lists into a Single List Without Duplicates
