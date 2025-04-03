@@ -19,5 +19,8 @@ abstract class Sample {
     private void write(){ //cant be overriden
         System.out.println("writing..");
     }
+    protected void shake(){ //cant be overriden
+        System.out.println("shaking");
+    }
 
 }
