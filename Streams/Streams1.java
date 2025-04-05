@@ -55,7 +55,7 @@ public static void main(String[] args) {
     Optional<Integer> ans5=num5.stream()
                                .sorted(Comparator.reverseOrder())
                                .skip(2)
-                               .limit(1)
+                              // .limit(1)
                                .findFirst();
     System.out.println("5) "+ans5.get());
 
@@ -117,6 +117,18 @@ public static void main(String[] args) {
                         .filter(x->x.startsWith(String.valueOf(c)))
                         .max(Comparator.comparingInt(String::length));
     System.out.println("12) "+asn12.get());
+
+    
+    //13) find first non repeating character in string
+    String words1="arunkumar";
+    Character c1=words1.chars()
+    .mapToObj(ce->(char)ce)
+    .filter(ch->words1.indexOf(ch)== words1.lastIndexOf(ch))
+    .findFirst()
+    .orElse(null);
+
+    System.out.println("13) "+c1);
+
 
     
 
