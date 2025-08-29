@@ -1,5 +1,5 @@
 package Sealed;
 
-public final class Rcb extends IplCup{
+public final class Rcb{
     // Error 
 }
