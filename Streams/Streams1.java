@@ -27,8 +27,10 @@ public static void main(String[] args) {
     //Expected 64
 
     Optional<Integer> secondHighest = numbers.stream()
-                .sorted((a, b) -> b - a) // Sort in descending order
+                .sorted((a, b) -> b - a)// Sort in descending order
+            //.sorted(Comparator.reverseOrder()) // Reverse the order to get the second highest
                 .skip(1) // Skip the first (highest) element
+                //.limit(1);
                 .findFirst(); 
 
     System.out.println("2) "+secondHighest.get());
@@ -88,9 +90,10 @@ public static void main(String[] args) {
     // 9) Find All Unique Characters in a List of Words
     List<String> words = List.of("apple", "banana");
 
-    Set<Character> uniqueChars = words.stream()
+    List<Character> uniqueChars = words.stream()
                                   .flatMap(word -> word.chars().mapToObj(c -> (char) c))
-                                  .collect(Collectors.toSet());
+                                  .distinct()
+                                  .collect(Collectors.toList());
 
     System.out.println("9) "+uniqueChars);
 
@@ -120,6 +123,11 @@ public static void main(String[] args) {
 
     
     //13) find first non repeating character in string
+
+
+
+
+    
     String words1="arunkumar";
     Character c1=words1.chars()
     .mapToObj(ce->(char)ce)
@@ -129,8 +137,10 @@ public static void main(String[] args) {
 
     System.out.println("13) "+c1);
 
-
-    
-
+    String str = "banana";
+Map<Character, Long> freq = str.chars()
+    .mapToObj(x -> (char) x)
+    .collect(Collectors.groupingBy(x->x,Collectors.counting()));
+System.out.println(freq);
 }
 }

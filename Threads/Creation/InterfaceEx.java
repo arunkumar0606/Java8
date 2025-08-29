@@ -1,4 +1,4 @@
-package Threads;
+package Threads.Creation;
 
 public class InterfaceEx implements Runnable {
 

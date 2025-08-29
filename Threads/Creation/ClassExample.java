@@ -1,4 +1,4 @@
-package Threads;
+package Threads.Creation;
 
 public class ClassExample extends Thread{
 
