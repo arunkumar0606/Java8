@@ -7,7 +7,7 @@ public class LockCounting {
 
         private final ReentrantLock lock =new ReentrantLock();
     
-        public synchronized void increment() {
+        public void increment() {
               // Thread-safe method
             lock.lock();
 
